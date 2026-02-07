@@ -122,6 +122,7 @@ Run Langfuse on your own infrastructure:
   ```
 
 - [VM](https://langfuse.com/self-hosting/docker-compose): Run Langfuse on a single Virtual Machine using Docker Compose.
+- **Podman (e.g. Raspberry Pi)**: Use the included Makefile: `make up` to start, `make down` to stop. See [docs/podman-self-host.md](docs/podman-self-host.md) for setup on Debian/Podman.
 - [Kubernetes (Helm)](https://langfuse.com/self-hosting/kubernetes-helm): Run Langfuse on a Kubernetes cluster using Helm. This is the preferred production deployment.
 - Terraform Templates: [AWS](https://langfuse.com/self-hosting/aws), [Azure](https://langfuse.com/self-hosting/azure), [GCP](https://langfuse.com/self-hosting/gcp)
 
