@@ -18,12 +18,14 @@ COMPOSE_FILE := docker-compose.yml
 
 # Prefer "podman compose" (built-in); fall back to "podman-compose"
 COMPOSE_CMD := $(shell command -v podman-compose >/dev/null 2>&1 && echo podman-compose || echo "podman compose")
+# podman-compose (standalone) does not support --wait; only add it for "podman compose"
+UP_WAIT := $(shell command -v podman-compose >/dev/null 2>&1 && echo "" || echo "--wait")
 
 .PHONY: up down down-volumes restart logs ps pull check-env help
 
 # Default target: bring up the stack
 up: check-env
-	$(COMPOSE_CMD) -f $(COMPOSE_FILE) up -d --wait
+	$(COMPOSE_CMD) -f $(COMPOSE_FILE) up -d $(UP_WAIT)
 
 # Tear down all services and remove containers
 down:
